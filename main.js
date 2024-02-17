@@ -1,0 +1,8 @@
+let saturate = document.getElementById("saturate")
+let contrast = document.getElementById("contrast")
+let brighness = document.getElementById("brighness")
+let sepia = document.getElementById("sepia")
+let grayscale = document.getElementById("grayscale")
+let blur = document.getElementById("blur")
+let hueRotate = document.getElementById("hue-rotate")
+console.log(saturate)
