@@ -12,12 +12,27 @@ let reset = document.querySelector('span')
 let imgBox = document.querySelector(".img-box")
 //------------------------------------------------------
 
+
+function resetvalue () {
+  img.style.filter=`none`
+  saturate.value = "100";
+  contrast.value = "100"
+  brighness.value = "100"
+  sepia.value = "0"
+  grayscale.value = "0"
+  blur.value = "0"
+  hueRotate.value = "0"
+}
+
+
+
 window.onload = function () {
   download.style.display = "none"
   reset.style.display = "none"
   imgBox.style.display = "none"
 };
 upload.onchange = function () {
+  resetvalue ()
   download.style.display = "block"
   reset.style.display = "block"
   imgBox.style.display = "block"
@@ -27,6 +42,22 @@ upload.onchange = function () {
     img.src = file.result;
   }
 };
-saturate.addEventListener( "input", function () {
-  img.style.filter = `saturate(${saturate.value}%)`
-})
+
+let filters = document.querySelectorAll("ul li input")
+filters.forEach( filter => {
+  filter.addEventListener( "input", function () {
+    img.style.filter = `
+              saturate(${saturate.value}%)
+              contrast(${contrast.value}%)
+              brightness(${brighness.value}%)
+              sepia(${sepia.value}%)
+              grayscale(${grayscale.value})
+              blur(${blur.value}px)
+              hue-rotate(${hueRotate.value}deg)
+    `
+  })
+} );
+
+download.onclick = function () {
+  download.href= img.src
+}
